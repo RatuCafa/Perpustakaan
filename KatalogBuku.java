@@ -104,4 +104,27 @@ public class KatalogBuku {
         }
         System.out.println("=================================\n");
     }
+    // Tambahkan method ini di dalam class KatalogBuku
+    /**
+     * Menghapus objek Buku dari katalog berdasarkan ISBN.
+     * @param isbn Nomor ISBN buku yang akan dihapus.
+     * @return true jika buku berhasil dihapus, false jika gagal (tidak ditemukan).
+     */
+    public boolean hapusBuku(String isbn) {
+        // Cari objek Buku yang sesuai
+        Buku bukuDihapus = cariBuku(isbn);
+
+        if (bukuDihapus == null) {
+            System.out.println("❌ Gagal! Buku dengan ISBN " + isbn + " tidak ditemukan.");
+            return false;
+        }
+
+        // Gunakan method remove dari ArrayList untuk menghapus objek
+        // ArrayList.remove(Object) mengembalikan true jika objek ditemukan dan dihapus
+        if (koleksiBuku.remove(bukuDihapus)) {
+            System.out.println("🗑️ Berhasil menghapus buku: " + bukuDihapus.getJudul());
+            return true;
+        }
+        return false; // Seharusnya tidak terjadi jika bukuDihapus != null
+    }
 }
